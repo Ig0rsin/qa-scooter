@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 // заполняем форму аренды на сайте, отправляем заказ, проверяем
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

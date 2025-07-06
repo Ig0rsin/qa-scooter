@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 // имитируем подтверждение заказа
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

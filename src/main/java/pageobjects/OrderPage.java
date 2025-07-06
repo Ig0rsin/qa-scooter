@@ -1,9 +1,6 @@
-package PageObjects;
+package pageobjects;
                                         // реализация РОМ
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import models.OrderData;
 
 public class OrderPage {
@@ -14,7 +11,8 @@ public class OrderPage {
     private final By addressInputSelector = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
     private final By subwayInputSelector = By.xpath(".//input[@placeholder='* Станция метро']");
     private final By phoneInputSelector = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
-    private final By nextButtonSelector = By.xpath(".//*[starts-with(@class,'Order_Content')]//button");
+    private final By nextButtonSelector = By.xpath(".//button[normalize-space(text())='Далее']");
+            //button[contains(@class, 'Button_Button__ra12g') and contains(@class, 'Button_Middle__1CSJM') and normalize-space(text())='Далее']\");");
 
     public OrderPage(WebDriver driver) {
         this.driver = driver;
@@ -22,21 +20,25 @@ public class OrderPage {
 // заполнение формы заказа
         public void setName(String name) {
             WebElement element = driver.findElement(this.nameInputSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.sendKeys(name);
         }
 
         public void setSurname(String surname) {
             WebElement element = driver.findElement(this.surnameInputSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.sendKeys(surname);
         }
 
         public void setAddress(String address) {
             WebElement element = driver.findElement(this.addressInputSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.sendKeys(address);
         }
 
         public void setSubway(String subway) {
             WebElement element = driver.findElement(this.subwayInputSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.sendKeys(subway);
             element.sendKeys(Keys.ARROW_DOWN);
             element.sendKeys(Keys.ENTER);
@@ -44,13 +46,15 @@ public class OrderPage {
 
         public void setPhone(String phone) {
             WebElement element = driver.findElement(this.phoneInputSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.sendKeys(phone);
         }
 
         public void clickNextButton() {
             WebElement element = this.driver.findElement(this.nextButtonSelector);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             element.click();
-        }
+    }
 // ТЫЦ по кнопке "Далее"
         public void fillInForm(OrderData data) {
             this.setName(data.getName());

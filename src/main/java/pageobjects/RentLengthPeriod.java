@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 // здесь выбираем срок и дату аренды
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
