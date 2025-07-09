@@ -5,18 +5,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 import pageobjects.HomePage;
 import pageobjects.OrderPage;
 import pageobjects.RentPage;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestLoginFlow extends TestBase {
 
     @ParameterizedTest
     @CsvSource({
-            "Петя, Ромашкин, ул. Отрадная, д. 10, Отрадное, +79998887766, 1, сутки",
-            "Уасся, Пупкин, ул. Льва Толстого, д. 16, Парк Культуры, +79990001122, 2, двое суток"
+            "Петя, Ромашкин, ул. Отрадная д. 10, Отрадное, +79998887766, 15, сутки", //ДОЛБАНАЯ ЗАПЯТАЯ!!!!!
+            "Уасся, Пупкин, ул. Льва Толстого д. 16, Парк Культуры, +79990001122, 12, двое суток" // АААААААААААААААААА!!!!!
     })
     public void testOrderWithFirstButton(String name, String surname,
                                          String address, String subwayStation,
@@ -38,6 +36,8 @@ public class TestLoginFlow extends TestBase {
         HomePage homePage = new HomePage(this.driver);
         homePage.clickTopOrderButton(); // верхняя
 
+// добавлена закрывашка для кукухи в TestBase
+
         OrderPage orderPage = new OrderPage(this.driver);
         orderPage.fillInForm(orderdata);
 
@@ -50,8 +50,8 @@ public class TestLoginFlow extends TestBase {
 
     @ParameterizedTest
     @CsvSource({
-            "Петя, Ромашкин, ул. Отрадная, д. 10, Отрадное, +79998887766, 1, сутки",
-            "Уасся, Пупкин, ул. Льва Толстого, д. 16, Парк Культуры, +79990001122, 2, двое суток"
+            "Петя, Ромашкин, ул. Отрадная д. 10, Отрадное, +79998887766, 15, сутки",
+            "Уасся, Пупкин, ул. Льва Толстого д. 16, Парк Культуры, +79990001122, 12, двое суток"
     })
     public void testOrderWithSecondButton(String name, String surname,
                                           String address, String subwayStation,
@@ -88,5 +88,5 @@ public class TestLoginFlow extends TestBase {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return LocalDate.now().plusDays(days).format(formatter);
     }
-}
 
+}

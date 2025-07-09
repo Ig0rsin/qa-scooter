@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePage {
-    private WebDriver driver; // взаимодействие с браузером
+    private WebDriver driver; // взаимодействие с браузейро
 
     // верхняя кнопка "Заказать"
     private By topOrderButton = By.className("Button_Button__ra12g");
