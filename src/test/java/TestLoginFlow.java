@@ -13,8 +13,8 @@ public class TestLoginFlow extends TestBase {
 
     @ParameterizedTest
     @CsvSource({
-            "Петя, Ромашкин, ул. Отрадная д. 10, Отрадное, +79998887766, 15, сутки", //ДОЛБАНАЯ ЗАПЯТАЯ!!!!!
-            "Уасся, Пупкин, ул. Льва Толстого д. 16, Парк Культуры, +79990001122, 12, двое суток" // АААААААААААААААААА!!!!!
+            "Петя, Ромашкин, ул. Отрадная д. 10, Отрадное, +79998887766, 15, сутки",
+            "Уасся, Пупкин, ул. Льва Толстого д. 16, Парк Культуры, +79990001122, 12, двое суток"
     })
     public void testOrderWithFirstButton(String name, String surname,
                                          String address, String subwayStation,
@@ -36,7 +36,7 @@ public class TestLoginFlow extends TestBase {
         HomePage homePage = new HomePage(this.driver);
         homePage.clickTopOrderButton(); // верхняя
 
-// добавлена закрывашка для кукухи в TestBase
+// добавлена закрывашка для кукухи
 
         OrderPage orderPage = new OrderPage(this.driver);
         orderPage.fillInForm(orderdata);
